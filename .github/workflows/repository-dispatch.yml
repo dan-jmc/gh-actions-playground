@@ -6,8 +6,8 @@ name: Repository Dispatch
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   repository_dispatch:
-    types: [upx-frontend-trunk-build, upx-frontend-pr-build]
-
+    # types: [upx-frontend-trunk-build, upx-frontend-pr-build]
+    types: [upx-frontend-build]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
