@@ -8,11 +8,11 @@ jobs:
 
   deploy-to-gcs-bucket:
     runs-on: ubuntu-latest
-
+    env:
+       BUILD_NAME: ${{ github.sha }}
     steps:
       - name: Set build name
         run: |
-          BUILD_NAME=${{ github.sha }}
           echo "Build name: $BUILD_NAME"
       - name: Dispatch build name to Aura repo
         uses: peter-evans/repository-dispatch@v3
@@ -22,5 +22,5 @@ jobs:
           event-type: upx-frontend-build
           client-payload: |-
             {
-              "build_name": "$BUILD_NAME"
+              "build_name": ${{ BUILD_NAME }}
             }
