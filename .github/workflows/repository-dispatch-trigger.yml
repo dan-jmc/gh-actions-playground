@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - name: Set build name
-        uses: bash
         run: |
           BUILD_NAME=${{ github.sha }}
           echo "Build name: $BUILD_NAME"
