@@ -1,0 +1,26 @@
+name: 'Repo dispatch trigger'
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  deploy-to-gcs-bucket:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set build name
+        uses: bash
+        run: |
+          BUILD_NAME=${{ github.sha }}
+          echo "Build name: $BUILD_NAME"
+      - name: Dispatch build name to Aura repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+#          token: ${{ secrets.AURA_REPOSITORY_DISPATCH_TOKEN }}
+          repository: dan-jmc/gh-actions-playground
+          event-type: upx-frontend-build
+          client-payload: |-
+            {
+              "build_name": "${{ steps.build-name.outputs.BUILD_NAME }}"
+            }
