@@ -26,3 +26,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Print build name
         run: echo ${{ github.event.client_payload.build_name }}
+
+      - name: Print current GH user
+        run: |
+          gh auth status
