@@ -22,5 +22,5 @@ jobs:
           event-type: upx-frontend-build
           client-payload: |-
             {
-              "build_name": ${{ vars.BUILD_NAME }}
+              "build_name": ${{ env.BUILD_NAME }}
             }
