@@ -1,6 +1,7 @@
 name: 'Repo dispatch trigger'
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:

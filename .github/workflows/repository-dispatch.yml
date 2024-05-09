@@ -11,9 +11,9 @@ on:
 
 jobs:
   update_build:
+    runs-on: ubuntu-latest
     env:
       UPX_BUILD_NAME: ${{ github.event.client_payload.build_name }}
-    runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
