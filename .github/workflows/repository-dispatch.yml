@@ -1,4 +1,4 @@
-name: Repository Dispatch
+name: Repository Dispatch update build
 
 defaults:
   run:
@@ -12,13 +12,12 @@ on:
 jobs:
   update_build:
     runs-on: ubuntu-latest
-    env:
-      UPX_BUILD_NAME: ${{ github.event.client_payload.build_name }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Update upx-frontend build version
         run: |
+          UPX_BUILD_NAME=${{ github.event.client_payload.build_name }}
           echo "Updating UPX build version to $UPX_BUILD_NAME"
           DEVENV_PATH=./components/upx-frontend/devenv
           sed -i -e s/UPX_FRONTEND_VERSION.*$/UPX_FRONTEND_VERSION=\"$TEST_VAR\"/g $DEVENV_PATH
